@@ -1,0 +1,267 @@
+\documentclass{beamer}
+
+\title{Formation KI} % Titre du rapport ou matière
+\subtitle{LaTeX 2} % Sous-titre du rapport
+\author{Yann Lapous (KI 025)}
+\date{27 avril 2023}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{svg}
+\usepackage{tcolorbox}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{appendix}
+\usepackage{appendixnumberbeamer}
+\usepackage{pgfplots}
+\usepackage{qrcode}
+
+
+\pgfplotsset{compat=1.18}
+
+\usetheme{CambridgeUS}
+
+% Définition de quelques couleurs (bleu du logo des Ponts)
+\definecolor{bleuPonts}{HTML}{0194C6}
+
+% Définition des couleurs du thème
+\setbeamercolor{section in toc}{fg=black,bg=white}
+\setbeamercolor{alerted text}{fg=red!80!gray}
+\setbeamercolor*{palette primary}{fg=bleuPonts!60!black,bg=gray!30!white}
+\setbeamercolor*{palette secondary}{fg=bleuPonts!70!black,bg=gray!15!white}
+\setbeamercolor*{palette tertiary}{bg=bleuPonts!80!black,fg=gray!10!white}
+\setbeamercolor*{palette quaternary}{fg=bleuPonts,bg=gray!5!white}
+
+\setbeamercolor*{sidebar}{fg=red,bg=gray!15!white}
+%set color structure
+\setbeamercolor*{structure}{fg=bleuPonts!80!black}
+
+\setbeamercolor*{palette sidebar primary}{fg=bleuPonts!10!black}
+\setbeamercolor*{palette sidebar secondary}{fg=gray!10!blak}
+\setbeamercolor*{palette sidebar tertiary}{fg=bleuPonts!50!black}
+\setbeamercolor*{palette sidebar quaternary}{fg=gray!30!blak}
+
+%\setbeamercolor*{titlelike}{parent=palette primary}
+\setbeamercolor{titlelike}{parent=palette primary,fg=bleuPonts}
+\setbeamercolor{frametitle}{bg=gray!10!white}
+\setbeamercolor{frametitle right}{bg=gray!60!white}
+
+\setbeamercolor*{separation line}{}
+\setbeamercolor*{fine separation line}{}
+
+% Définition de la page de garde
+\defbeamertemplate*{title page}{customized}[1][]
+{
+    \centering
+    \includesvg[width=0.2\paperwidth]{assets/logo.svg}\par
+    \bigskip
+    \usebeamerfont{title}\Huge{\inserttitle}\par
+    \usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\Large{\insertsubtitle}\par
+}
+
+% Définition de la forme des items
+\setbeamertemplate{itemize items}[default]
+\setbeamertemplate{enumerate items}[default]
+\setbeamertemplate{section in toc}[square]
+
+% Enlève la barre de navigation
+\beamertemplatenavigationsymbolsempty
+
+% Couleurs pour les listings (Dracula)
+\definecolor{draculaBackground}{HTML}{282a36}
+\definecolor{draculaCurentLine}{HTML}{44475a}
+\definecolor{draculaSelection}{HTML}{44475a}
+\definecolor{draculaForeground}{HTML}{f8f8f2}
+\definecolor{draculaComment}{HTML}{6272a4}
+\definecolor{draculaCyan}{HTML}{8be9fd}
+\definecolor{draculaGreen}{HTML}{50fa7b}
+\definecolor{draculaOrange}{HTML}{ffb86c}
+\definecolor{draculaPink}{HTML}{ff79c6}
+\definecolor{draculaPurple}{HTML}{bd93f9}
+\definecolor{draculaRed}{HTML}{ff5555}
+\definecolor{draculaYellow}{HTML}{f1fa8c}
+%utilisation pour les listings de ces couleurs
+% \lstset{
+%     frame=tb,
+%     basicstyle=\ttfamily\tiny\color{draculaForeground},
+%     backgroundcolor=\color{draculaBackground},
+%     commentstyle=\color{draculaComment},
+%     keywordstyle=\color{draculaCyan},
+%     stringstyle=\color{draculaGreen},
+%     identifierstyle=\color{draculaPink},
+%     breaklines=true,
+%     numbers=left,
+%     numberstyle=\color{bleuPonts},
+%     extendedchars=true,
+%     xleftmargin=5mm,
+%     xrightmargin=5mm
+% }
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    identifierstyle=\color{blue},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\begin{document}
+    \begin{frame}
+        \titlepage
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Sommaire}
+        \setcounter{tocdepth}{1}
+        \tableofcontents
+    \end{frame}
+    \section*{Introduction}
+    \begin{frame}
+        \frametitle{Introduction}
+        \centering
+        \includegraphics[width=.5\textwidth]{assets/image1.png}
+    \end{frame}
+    \subsection{Commandes}
+    \begin{frame} [allowframebreaks=1,fragile,t]
+        \begin{lstlisting}[language=python]
+            def hello_world():
+                print("Hello World")
+            if __name__ == "__main__":
+                hello_world()
+        \end{lstlisting}
+        \begin{block}{Comment afficher ?}
+            il faut utiliser le package \texttt{listings}, \lstinline[language=tex]!\usepackage{listings}!
+            \begin{itemize}
+            \item \lstinline[language=tex]{\lstinline[language=python]!print("Hello World")!} 
+            \item \lstinline[language=tex]!\lstinline[language=python]{print("Hello World")}!
+            \item \lstinline[language=tex]!\begin{lstlisting}[language=python] ... \end{lstlisting}!
+            \item \lstinline[language=tex]!\lstinputlisting[language=python]{main.py}!
+            \end{itemize}
+        \end{block}
+    \end{frame}
+    \subsection{Customiser la mise en forme}
+    \begin{frame}
+        \frametitle{Imposer un style}
+        \lstinputlisting[language=tex]{assets/code_1.tex}
+        \begin{alertblock}{Attention}
+            Ici il faut définir les couleurs grace au package \texttt{xcolor}
+        \end{alertblock}
+    \end{frame}
+    \begin{frame}[allowframebreaks=1,fragile,t]
+        \frametitle{Créer un style}
+        \lstinputlisting[language=tex]{assets/code_2.tex}
+        \begin{block}{Utilisation}
+            \lstinline[language=tex]!\lstset{style=mystyle}!
+        \end{block}
+    \end{frame}
+
+    \section{Ajouter des graphiques et des figures}
+    \subsection{Images}
+    \begin{frame}
+        \centering
+        \includesvg[width=0.2\paperwidth]{assets/enpc.svg}
+        \begin{block}{\texttt{includesvg} et \texttt{includegraphics}}
+            \lstinputlisting[language=tex]{assets/code_3.tex}
+        \end{block}
+    \end{frame}
+    \subsection{Graphiques}
+    \begin{frame}
+        \frametitle{Graphiques PNG}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=8cm,height=6cm]{assets/graphique.png}
+            \caption{Graphique png}
+        \end{figure}
+    \end{frame}
+    \begin{frame}
+        \frametitle{Graphiques PGF}
+        \begin{figure}[H]
+        \centering
+            \input{assets/graphique.tex} 
+            \caption{Graphique pgf}
+        \end{figure}
+    \end{frame}
+    \begin{frame}
+        \begin{block}{Meilleure solution}
+            La meilleure solution : utiliser Python pour faire ses
+            graphiques grace aux packages \texttt{matplotlib} et \texttt{tikzplotlib}
+        \end{block}
+        \begin{block}{Dans Python}
+            \lstinline[language=python]{tikzplotlib.save("nom_du_fichier.tex")}
+        \end{block}
+        \begin{block}{Dans LaTeX}
+            \lstinputlisting[language=tex]{assets/code_4.tex}
+        \end{block}
+    \end{frame}
+    \section{Ajouter une bibliographie}
+    \begin{frame}
+        \frametitle{Fichier \texttt{.bib}}
+        \lstinputlisting[language=tex]{assets/code_bib.bib}
+    \end{frame}
+    \begin{frame}
+        \frametitle{Utilisation}
+        \lstinputlisting[language=tex]{assets/code_bibtex.tex}
+    \end{frame}
+    \begin{frame}
+        \frametitle{Zotero}
+        \begin{columns}
+        \column{0.8\textwidth}
+            \centering
+            \includegraphics[width=1\textwidth]{assets/zotero.png}
+        \column{0.2\textwidth}
+            \centering
+            \includegraphics[width=1\textwidth]{assets/zotero2.png}
+        \end{columns}
+    \end{frame}
+    \section{Faire des présentations}
+    \begin{frame}
+        \frametitle{Beamer}
+        \begin{block}{Beamer}
+            Beamer est un package LaTeX qui permet de faire des présentations
+        \end{block}
+        \centering
+        \Huge{Vous savez déjà faire !}
+    \end{frame}
+    \begin{frame}
+        \frametitle{Exemple}
+        \begin{alertblock}{Particularité}
+            Contrairement à la classse \texttt{article}, il faut utiliser les environnements \texttt{frame} pour
+            préciser à \LaTeX{} où commencent et où finissent les diapositives.
+        \end{alertblock}
+
+        \lstinputlisting[language=tex]{assets/code_beamer.tex}
+    \end{frame}
+    \section{Conclusion}
+    \begin{frame}
+        \centering
+        \Huge Merci, à vous de jouer !
+        
+        \vspace{1cm}
+
+        \normalsize\url{https://kiclubinfo.notion.site/Formation-LaTeX-2-e1fd51c463754565876d215aaf670ce0}
+
+        \vspace{.5cm}
+        \qrcode[height=.3\textwidth]{https://kiclubinfo.notion.site/Formation-LaTeX-2-e1fd51c463754565876d215aaf670ce0}
+    \end{frame}
+
+\end{document}
