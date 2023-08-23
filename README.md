@@ -1,11 +1,10 @@
-# Formation LaTeX 2
+# Formation Python
 *Yann LAPOUS (KI 025)*
-*27 avril 2023*
+*4 septembre 2023*
 
-Cette formation a pour but d'apprendre aux étudiants de l'Ecole des Ponts ParisTech à utiliser des outils intermédiaire en LaTeX :
-* Implémenter du code
-* Implémenter des graphiques
-* Ajouter une bibliographie
-* Faire des présentations (beamer)
+Cette formation a pour but de rétablir un niveau homogéne aux étudiants de première année de l'Ecole des Ponts ParisTech :
+* Bases du language
+* Programmation orientée objet
+* Modules important
 
-L'objectif final est de permettre aux étudiants de pouvoir faire leurs rapports et soutenances de projets.
+Ce cours viens en amont de l'OMPI maths.

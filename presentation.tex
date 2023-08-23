@@ -1,9 +1,9 @@
 \documentclass{beamer}
 
 \title{Formation KI} % Titre du rapport ou matière
-\subtitle{LaTeX 2} % Sous-titre du rapport
+\subtitle{Python} % Sous-titre du rapport
 \author{Yann Lapous (KI 025)}
-\date{27 avril 2023}
+\date{4 sept 2023}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -16,6 +16,7 @@
 \usepackage{appendixnumberbeamer}
 \usepackage{pgfplots}
 \usepackage{qrcode}
+\usepackage{fontawesome5}
 
 
 \pgfplotsset{compat=1.18}
@@ -110,7 +111,7 @@
     numberstyle=\tiny\color{codegray},
     stringstyle=\color{codepurple},
     identifierstyle=\color{blue},
-    basicstyle=\ttfamily\footnotesize,
+    basicstyle=\ttfamily\scriptsize,
     breakatwhitespace=false,         
     breaklines=true,                 
     captionpos=b,                    
@@ -137,121 +138,109 @@
     \end{frame}
     \section*{Introduction}
     \begin{frame}
-        \frametitle{Introduction}
+        \frametitle{Pourquoi cette formation ?}
         \centering
-        \includegraphics[width=.5\textwidth]{assets/image1.png}
+        \includegraphics[width=.5\textwidth]{assets/meme_python.png}
     \end{frame}
-    \section{Implémenter du code}
-    \subsection{Commandes}
-    \begin{frame} [allowframebreaks=1,fragile,t]
-        \begin{lstlisting}[language=python]
-            def hello_world():
-                print("Hello World")
-            if __name__ == "__main__":
-                hello_world()
-        \end{lstlisting}
-        \begin{block}{Comment afficher ?}
-            il faut utiliser le package \texttt{listings}, \lstinline[language=tex]!\usepackage{listings}!
-            \begin{itemize}
-            \item \lstinline[language=tex]{\lstinline[language=python]!print("Hello World")!} 
-            \item \lstinline[language=tex]!\lstinline[language=python]{print("Hello World")}!
-            \item \lstinline[language=tex]!\begin{lstlisting}[language=python] ... \end{lstlisting}!
-            \item \lstinline[language=tex]!\lstinputlisting[language=python]{main.py}!
-            \end{itemize}
-        \end{block}
-    \end{frame}
-    \subsection{Customiser la mise en forme}
     \begin{frame}
-        \frametitle{Imposer un style}
-        \lstinputlisting[language=tex]{assets/code_1.tex}
-        \begin{alertblock}{Attention}
-            Ici il faut définir les couleurs grace au package \texttt{xcolor}
-        \end{alertblock}
+        \centering
+
+        \normalsize\url{https://kiclubinfo.notion.site/Formation-Python-219ab0fc71c24f50b06bee30f60f649a?pvs=4}
+	\\[.5cm]
+        \qrcode[height=.3\textwidth]{https://kiclubinfo.notion.site/Formation-Python-219ab0fc71c24f50b06bee30f60f649a?pvs=4}
     \end{frame}
-    \begin{frame}[allowframebreaks=1,fragile,t]
-        \frametitle{Créer un style}
-        \lstinputlisting[language=tex]{assets/code_2.tex}
-        \begin{block}{Utilisation}
-            \lstinline[language=tex]!\lstset{style=mystyle}!
+    
+    \section{Base du langage}
+    \subsection{Variables}
+    \begin{frame}
+        \frametitle{Types de variables}
+        \lstinputlisting[language=python]{assets/pres_var.py}
+
+        \begin{itemize}
+            \item \texttt{int} pour les \textbf{entier}
+            \item \texttt{float} pour les \textbf{décimaux}
+            \item \texttt{bool} pour les \textbf{booléen}
+            \item \texttt{string} pour les \textbf{chaines de caractères}
+        \end{itemize}
+    \end{frame}
+    \begin{frame}
+        \frametitle{Opérations et relations binaires}
+        \begin{itemize}
+            \item \texttt{x+y} : \textbf{Addition}
+            \item \texttt{x-y} : \textbf{Soustraction}
+            \item \texttt{x*y} : \textbf{Multiplication}
+            \item \texttt{x/y} : \textbf{Division}, renvoie (toujours) un flottant
+            \item \texttt{x//y} : \textbf{Quotient}
+            \item \texttt{x\%y} : \textbf{Reste}
+            \item \texttt{x==y} : \textbf{\'Egalité}
+            \item \texttt{<},\texttt{<=},\texttt{>} et \texttt{>=} : \textbf{Relation d'ordre}
+        \end{itemize}
+    \end{frame}
+    \subsection{Listes et dictionnaires}
+    \begin{frame}
+        \frametitle{Listes}
+        \lstinputlisting[language=python]{assets/liste.py}
+    \end{frame}
+    \begin{frame}
+        \frametitle{Dictionnaires}
+        \lstinputlisting[language=python]{assets/dico.py}
+    \end{frame}
+    \subsection{Boucles et conditions}
+    \begin{frame}
+        \frametitle{Conditions}
+        \lstinputlisting[language=python]{assets/condition.py}
+    \end{frame}
+    \begin{frame}
+        \frametitle{Boucle \texttt{while}}
+        \lstinputlisting[language=python]{assets/while.py}
+    \end{frame}
+    \begin{frame}
+        \frametitle{Boucle \texttt{for}}
+        \lstinputlisting[language=python]{assets/for.py}
+    \end{frame}
+    \subsection{Fonctions}
+    \begin{frame}
+        \frametitle{Fonctions réutilisables}
+        \lstinputlisting[language=Python]{assets/fonct.py}
+    \end{frame}
+    \begin{frame}
+        \lstinputlisting[language=Python]{assets/fonc2.py}
+    \end{frame}
+
+    \section{Programmation orientée objet}
+    \begin{frame}
+        \frametitle{La POO c'est quoi ?}
+        \centering
+        \includegraphics[width=.7\textwidth]{assets/schéma_poo.png}
+    \end{frame}
+    \subsection{Définir une classe}
+    \begin{frame}
+        \frametitle{Initialisation}
+        \lstinputlisting[language=Python]{assets/poo_init.py}
+    \end{frame}
+    \begin{frame}
+        \frametitle{Méthodes}
+        \lstinputlisting[language=Python]{assets/poo_methodes.py}
+    \end{frame}
+
+    \section{Modules importants}
+    \begin{frame}
+        \frametitle{Quelques modules}
+        \begin{itemize}
+            \item \faCalculator \ \textbf{\textit{NumPy}} : Bibliothèque  qui permet de manipuler des matrices ou tableaux multidimensionnels ainsi que des fonctions mathématiques opérant sur ces tableaux.
+            \item \faChartBar \ \textbf{\textit{Matplotlib}} : Bibliothèque destinée à tracer et visualiser des données sous forme de graphiques.
+            \item \faTable \ \textbf{\textit{Pandas}} : Bibliothèque permettant la manipulation et l'analyse des données.
+        \end{itemize}
+
+        \begin{block}{Utilisation (exemple avec \textit{NumPy})}
+            On place au début de son script la ligne suivante :
+            \lstinline[language=Python]{import numpy as np} 
+
+            On utilise les différentes fonction en appliquant \lstinline[language=Python]{np.} puis la fonction (ou constructeur d'objet). Exemple : \lstinline[language=Python]{np.array([2,3,4])} ou \lstinline[language=Python]{np.sqrt(9)}
+
         \end{block}
     \end{frame}
 
-    \section{Ajouter des graphiques et des figures}
-    \subsection{Images}
-    \begin{frame}
-        \centering
-        \includesvg[width=0.2\paperwidth]{assets/enpc.svg}
-        \begin{block}{\texttt{includesvg} et \texttt{includegraphics}}
-            \lstinputlisting[language=tex]{assets/code_3.tex}
-        \end{block}
-    \end{frame}
-    \subsection{Graphiques}
-    \begin{frame}
-        \frametitle{Graphiques PNG}
-        \begin{figure}[H]
-            \centering
-            \includegraphics[width=8cm,height=6cm]{assets/graphique.png}
-            \caption{Graphique png}
-        \end{figure}
-    \end{frame}
-    \begin{frame}
-        \frametitle{Graphiques PGF}
-        \begin{figure}[H]
-        \centering
-            \input{assets/graphique.tex} 
-            \caption{Graphique pgf}
-        \end{figure}
-    \end{frame}
-    \begin{frame}
-        \begin{block}{Meilleure solution}
-            La meilleure solution : utiliser Python pour faire ses
-            graphiques grace aux packages \texttt{matplotlib} et \texttt{tikzplotlib}
-        \end{block}
-        \begin{block}{Dans Python}
-            \lstinline[language=python]{tikzplotlib.save("nom_du_fichier.tex")}
-        \end{block}
-        \begin{block}{Dans LaTeX}
-            \lstinputlisting[language=tex]{assets/code_4.tex}
-        \end{block}
-    \end{frame}
-    \section{Ajouter une bibliographie}
-    \begin{frame}
-        \frametitle{Fichier \texttt{.bib}}
-        \lstinputlisting[language=tex]{assets/code_bib.bib}
-    \end{frame}
-    \begin{frame}
-        \frametitle{Utilisation}
-        \lstinputlisting[language=tex]{assets/code_bibtex.tex}
-    \end{frame}
-    \begin{frame}
-        \frametitle{Zotero}
-        \begin{columns}
-        \column{0.8\textwidth}
-            \centering
-            \includegraphics[width=1\textwidth]{assets/zotero.png}
-        \column{0.2\textwidth}
-            \centering
-            \includegraphics[width=1\textwidth]{assets/zotero2.png}
-        \end{columns}
-    \end{frame}
-    \section{Faire des présentations}
-    \begin{frame}
-        \frametitle{Beamer}
-        \begin{block}{Beamer}
-            Beamer est un package LaTeX qui permet de faire des présentations
-        \end{block}
-        \centering
-        \Huge{Vous savez déjà faire !}
-    \end{frame}
-    \begin{frame}
-        \frametitle{Exemple}
-        \begin{alertblock}{Particularité}
-            Contrairement à la classse \texttt{article}, il faut utiliser les environnements \texttt{frame} pour
-            préciser à \LaTeX{} où commencent et où finissent les diapositives.
-        \end{alertblock}
-
-        \lstinputlisting[language=tex]{assets/code_beamer.tex}
-    \end{frame}
     \section*{Conclusion}
     \begin{frame}
         \centering
@@ -259,10 +248,10 @@
         
         \vspace{1cm}
 
-        \normalsize\url{https://kiclubinfo.notion.site/Formation-LaTeX-2-e1fd51c463754565876d215aaf670ce0}
+        \normalsize\url{https://kiclubinfo.notion.site/Formation-Python-219ab0fc71c24f50b06bee30f60f649a?pvs=4}
 
         \vspace{.5cm}
-        \qrcode[height=.3\textwidth]{https://kiclubinfo.notion.site/Formation-LaTeX-2-e1fd51c463754565876d215aaf670ce0}
+        \qrcode[height=.3\textwidth]{https://kiclubinfo.notion.site/Formation-Python-219ab0fc71c24f50b06bee30f60f649a?pvs=4}
     \end{frame}
 
 \end{document}
